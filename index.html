@@ -2,16 +2,16 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Bài Tập Tuần 6 - Layout </title>
+    <title>Bài Tập Tuần 6 - Layout HUIT</title>
     <style>
-
+        /* [cite: 45, 46] Box model và Box-sizing */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-    
+        /* [cite: 31] topHeader: chứa 3 link chạy từ phải sang trái */
         .topHeader {
             background-color: #f1f1f1;
             padding: 5px;
@@ -30,7 +30,7 @@
             margin: 0 15px;
         }
 
-      
+        /* [cite: 33] Header: Logo bên trái và banner */
         .header {
             display: flex;
             height: 120px;
@@ -58,7 +58,7 @@
             min-height: 400px;
         }
 
-     
+        /* [cite: 34] Sidebar: Liên kết liên quan */
         .sidebar {
             width: 25%;
             background-color: #fafafa;
@@ -66,7 +66,7 @@
             border-right: 1px solid #ddd;
         }
 
-     
+        /* [cite: 35] Content area: Chứa nhiều khối item giống nhau */
         .content-area {
             width: 75%;
             display: flex;
@@ -75,7 +75,7 @@
             padding: 20px;
         }
 
-       
+        /* [cite: 47, 60, 69] Định dạng Item với Box-shadow, Transform, Filter */
         .item {
             width: calc(33.33% - 15px);
             height: 180px;
@@ -84,18 +84,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.1); /* [cite: 47] */
             transition: 0.3s;
         }
 
-    
+        /* Hiệu ứng khi hover vào item */
         .item:hover {
-            transform: scale(1.1); 
-            filter: brightness(1.2);
+            transform: scale(1.1); /* [cite: 60, 62] Phóng to */
+            filter: brightness(1.2); /* [cite: 69] Tăng độ sáng */
             cursor: pointer;
         }
 
-    
+        /*  Footer: Thông tin sinh viên - bản quyền */
         .footer {
             background-color: #333;
             color: white;
@@ -141,8 +141,8 @@
     </div>
 
     <footer class="footer">
-        <p>Họ tên SV: <b>[Điền Tên Bạn]</b> - MSSV: <b>[Điền MSSV]</b></p>
-        <p>© 2026 Bản quyền thuộc về sinh viên HUIT</p>
+        <p>Họ tên SV: <b>Ngô Thị Mỹ Hằng</b> - MSSV: 2044230054 <b>[Điền MSSV]</b></p>
+        <p>© 2026 Bản quyền thuộc về Ngô Thị Mỹ Hằng</p>
     </footer>
 
 </body>
