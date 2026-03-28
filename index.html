@@ -2,243 +2,147 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bài Tập Tuần 6 - Layout Thiết Kế Web</title>
+    <title>Bài Tập Tuần 6 - Layout </title>
     <style>
-        /* 1. RESET & BOX MODEL [cite: 45, 46] */
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box; /* Đảm bảo kích thước box bao gồm cả border và padding */
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-        }
-
-        /* 2. TOP HEADER [cite: 31] */
-        .top-header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 8px 20px;
+    
+        .topHeader {
+            background-color: #f1f1f1;
+            padding: 5px;
             overflow: hidden;
         }
 
-        .marquee-content {
-            display: flex;
-            justify-content: flex-end;
-            gap: 20px;
-            animation: moveLeft 15s linear infinite; /* Chạy từ phải sang trái */
-        }
-
-        @keyframes moveLeft {
-            from { transform: translateX(100%); }
-            to { transform: translateX(-100%); }
-        }
-
-        /* 3. NAVIGATION [cite: 32, 54] */
+        /* [cite: 32] Navigation: hệ thống menu */
         .navigation {
-            background-color: #27ae60;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background-color: #4CAF50;
+            padding: 10px;
+            text-align: center;
         }
-
-        .navigation ul {
-            display: flex; /* Sử dụng Flexbox [cite: 54] */
-            list-style: none;
-            justify-content: center;
-        }
-
-        .navigation ul li a {
-            display: block;
-            padding: 15px 25px;
+        .navigation a {
             color: white;
             text-decoration: none;
+            margin: 0 15px;
+        }
+
+      
+        .header {
+            display: flex;
+            height: 120px;
+            border-bottom: 1px solid #ccc;
+        }
+        .logo {
+            width: 20%;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .banner {
+            width: 80%;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+        }
+
+        /* [cite: 42, 54] Dùng Flex cho Main Layout */
+        .main-container {
+            display: flex;
+            min-height: 400px;
+        }
+
+     
+        .sidebar {
+            width: 25%;
+            background-color: #fafafa;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+        }
+
+     
+        .content-area {
+            width: 75%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+       
+        .item {
+            width: calc(33.33% - 15px);
+            height: 180px;
+            background-color: white;
+            border: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
             transition: 0.3s;
         }
 
-        .navigation ul li a:hover {
-            background-color: #1e8449;
-        }
-
-        /* 4. HEADER (Logo & Banner) [cite: 33] */
-        .header {
-            display: flex;
-            height: 150px;
-            background-color: white;
-            border-bottom: 2px solid #ddd;
-        }
-
-        .logo {
-            width: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #ecf0f1;
-            font-weight: bold;
-            color: #e74c3c;
-        }
-
-        .banner {
-            flex-grow: 1;
-            background: linear-gradient(to right, #3498db, #8e44ad);
-            display: flex;
-            align-items: center;
-            padding-left: 50px;
-            color: white;
-            font-size: 24px;
-        }
-
-        /* 5. MAIN CONTAINER [cite: 34, 35] */
-        .main-container {
-            display: flex; /* Layout div không dùng table [cite: 30] */
-            max-width: 1200px;
-            margin: 20px auto;
-            gap: 20px;
-        }
-
-        /* Sidebar [cite: 34] */
-        .sidebar {
-            width: 250px;
-            background-color: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .sidebar h3 {
-            border-bottom: 2px solid #27ae60;
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-        }
-
-        .sidebar ul {
-            list-style: none;
-        }
-
-        .sidebar ul li a {
-            text-decoration: none;
-            color: #34495e;
-            display: block;
-            padding: 8px 0;
-            border-bottom: 1px dashed #eee;
-        }
-
-        /* Content Area [cite: 35] */
-        .content-area {
-            flex-grow: 1;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 cột mỗi hàng [cite: 55] */
-            gap: 20px;
-        }
-
-        .product-item {
-            background-color: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.1); /* Box-shadow [cite: 47] */
-            transition: transform 0.3s, filter 0.3s; /* Transform & Filter [cite: 57, 67] */
-        }
-
-        /* Hiệu ứng Transform và Filter khi hover [cite: 60, 69] */
-        .product-item:hover {
-            transform: scale(1.05); /* Phóng to 105% [cite: 62] */
-            filter: brightness(1.1); /* Tăng độ sáng [cite: 69] */
+    
+        .item:hover {
+            transform: scale(1.1); 
+            filter: brightness(1.2);
             cursor: pointer;
         }
 
-        .product-img {
-            width: 100%;
-            height: 150px;
-            background-color: #eee;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* 6. FOOTER  */
+    
         .footer {
-            background-color: #2c3e50;
+            background-color: #333;
             color: white;
             text-align: center;
-            padding: 30px;
-            margin-top: 40px;
-        }
-
-        .footer b {
-            color: #f1c40f;
+            padding: 20px;
+            clear: both;
         }
     </style>
 </head>
 <body>
 
-    <div class="top-header">
-        <div class="marquee-content">
-            <span>Sản phẩm mới nhất</span>
-            <span>Tin tức công nghệ</span>
-            <span>Khuyến mãi tháng 3</span>
-            <span>Liên hệ: 0123.456.789</span>
-        </div>
+    <div class="topHeader">
+        <marquee direction="left">Sản phẩm mới | Tin tức công nghệ | Khuyến mãi đặc biệt</marquee>
     </div>
 
     <nav class="navigation">
-        <ul>
-            <li><a href="#">Trang chủ</a></li>
-            <li><a href="#">Sản phẩm</a></li>
-            <li><a href="#">Tin tức</a></li>
-            <li><a href="#">Bài tập nhóm</a></li>
-            <li><a href="#">Liên hệ</a></li>
-        </ul>
+        <a href="#">Trang chủ</a>
+        <a href="#">Sản phẩm</a>
+        <a href="#">Tin tức</a>
+        <a href="#">Liên hệ</a>
     </nav>
 
     <header class="header">
-        <div class="logo">MY LOGO</div>
-        <div class="banner">Chào mừng đến với Website của tôi</div>
+        <div class="logo">LOGO</div>
+        <div class="banner">HÌNH ẢNH BANNER</div>
     </header>
 
     <div class="main-container">
         <aside class="sidebar">
             <h3>Danh mục</h3>
             <ul>
-                <li><a href="#">Sản phẩm nổi bật</a></li>
-                <li><a href="#">Điện thoại - Tablet</a></li>
-                <li><a href="#">Phụ kiện giá rẻ</a></li>
-                <li><a href="#">Hàng cũ giá tốt</a></li>
+                <li>Sản phẩm nổi bật</li>
+                <li>Tin khuyến mãi</li>
             </ul>
         </aside>
 
         <main class="content-area">
-            <div class="product-item">
-                <div class="product-img">Hình ảnh 1</div>
-                <h4>Sản phẩm mẫu 1</h4>
-                <p>Giá: 500.000đ</p>
-            </div>
-            <div class="product-item">
-                <div class="product-img">Hình ảnh 2</div>
-                <h4>Sản phẩm mẫu 2</h4>
-                <p>Giá: 750.000đ</p>
-            </div>
-            <div class="product-item">
-                <div class="product-img">Hình ảnh 3</div>
-                <h4>Sản phẩm mẫu 3</h4>
-                <p>Giá: 1.200.000đ</p>
-            </div>
-            <div class="product-item">
-                <div class="product-img">Hình ảnh 4</div>
-                <h4>Sản phẩm mẫu 4</h4>
-                <p>Giá: 300.000đ</p>
-            </div>
+            <div class="item">Sản phẩm 1</div>
+            <div class="item">Sản phẩm 2</div>
+            <div class="item">Sản phẩm 3</div>
+            <div class="item">Sản phẩm 4</div>
         </main>
     </div>
 
     <footer class="footer">
-        <p>Họ tên SV: <b>Ngô Thị Mỹ Hằng</b> - Lớp: 14DHTMDT03 <b>THIẾT KẾ WEB - TUẦN 6</b></p>
-        <p>MSSV: <b>2044230054</b></p>
-        <p>© 2026 Bản quyền thuộc về sinh viên HUIT - Học kỳ 2</p>
+        <p>Họ tên SV: <b>[Điền Tên Bạn]</b> - MSSV: <b>[Điền MSSV]</b></p>
+        <p>© 2026 Bản quyền thuộc về sinh viên HUIT</p>
     </footer>
 
 </body>
